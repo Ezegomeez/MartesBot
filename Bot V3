@@ -1,0 +1,26 @@
+import tweepy 
+import datetime 
+
+consumer_key = 'XDxI4qOP86nb81UnB4w1iFm04' 
+consumer_secret = '1BLE3GwFXVLgFPzPiANNHUY8WTMcG87JVkYdeMKcOtTPY2bnLC' 
+access_token = '1312123874901929984-qJjxcyIO1ifENpkvM5ytO7RNU5eZ8e' 
+access_token_secret = 'yNair0kBYF3f6tzH3XtAKTuTJkq2cBkZxZiBhNWal6Ixi' 
+bearer_token = 'AAAAAAAAAAAAAAAAAAAAAF4KIQEAAAAArmHSlvVc3rNb7Jf2yhzzWq1ktW4%3DGkaWF2uA4NkofIBf0kQqmt09mHI94PxjJd1gDmogTqgZksuCbP'
+
+
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret) 
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth)
+
+def publictweet():
+ hour = datetime.datetime.now().hour
+ minutes = datetime.datetime.now().minute
+ seconds = datetime.datetime.now().second
+ if datetime.date.today().weekday() == 1 and hour == 11 and minutes == 0 and seconds == 0:
+  tweettopublish = 'Enjoy your Tuesday.  #Tuesday'
+  api.update_status(tweettopublish)
+  print(tweettopublish)
+  publictweet()
+ else:
+  publictweet()
+  return None
